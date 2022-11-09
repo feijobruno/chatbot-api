@@ -10,11 +10,11 @@
 
 ## :speech_balloon: Sobre <a name="about"></a>
 
-> Projeto de chatbot utilizando Typescript, SQlLite e WebSocket. Os testes unitários foram realizados com o jest.
-> O projeto utilizou principios do SOLID:
-> S — Single Responsiblity Principle (Princípio da responsabilidade única): utilizado na refatoração das rotas, no qual a mesma ficou somente com a responsabilidade de receber a requisação e retornar o que foi processado.
-> L — Liskov Substitution Principle (Princípio da substituição de Liskov): utilizado na criação das interfaces do Repository. 
-> D — Dependency Inversion Principle (Princípio da inversão da dependência): utilizado para na refatoração o Service (alto nível), que antes dependia do Repository (baixo nível), e agora o Service não conhece o que o Repository está utilizando (SQLlite, Oracle, in-memory).  
+> Projeto de chatbot utilizando Typescript, SQlLite e WebSocket. Os testes unitários foram realizados com o jest.<br>
+> O projeto utilizou principios do SOLID:<br>
+> S — Single Responsiblity Principle (Princípio da responsabilidade única): utilizado na refatoração das rotas, no qual a mesma ficou somente com a responsabilidade de receber a requisação e retornar o que foi processado.<br>
+> L — Liskov Substitution Principle (Princípio da substituição de Liskov): utilizado na criação das interfaces do Repository. <br>
+> D — Dependency Inversion Principle (Princípio da inversão da dependência): utilizado para na refatoração o Service (alto nível), que antes dependia do Repository (baixo nível), e agora o Service não conhece o que o Repository está utilizando (SQLlite, Oracle, in-memory).<br>
 > Também foi utilizada a injeção de dependência, buscando melhorar a testabilidade do código, no qual foi injetado as classes do Repository nas Interfaces.
 
 
