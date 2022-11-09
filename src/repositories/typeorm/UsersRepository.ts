@@ -4,6 +4,7 @@ import { ICreateUserDTO, IUsersRepository } from "../IUsersRepository";
 
 @EntityRepository(User)
 class UsersRepository implements IUsersRepository {
+    
     private repository: Repository<User>; 
 
     constructor() {

@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-
+import { container } from 'tsyringe';
 import { SettingsService } from "../services/SettingsService";
 
 class SettingsController {
   async create(request: Request, response: Response) {
     const { username, chat } = request.body;
 
-    const settingsService = new SettingsService();
+    const settingsService = container.resolve(SettingsService);
 
     try {
       const settings = await settingsService.create({ chat, username });
@@ -22,7 +22,7 @@ class SettingsController {
   async findByUserName(request: Request, response: Response) {
     const { username } = request.params;
 
-    const settingsService = new SettingsService();
+    const settingsService = container.resolve(SettingsService);
 
     const settings = await settingsService.findByUserName(username);
 
@@ -34,7 +34,7 @@ class SettingsController {
 
     const { chat } = request.body;
 
-    const settingsService = new SettingsService();
+    const settingsService = container.resolve(SettingsService);
 
     const settings = await settingsService.update(username, chat);
 

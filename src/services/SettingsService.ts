@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { getCustomRepository } from "typeorm";
 import { ISettingsRepository } from "../repositories/ISettingsRepository";
 import { SettingsRepository } from "../repositories/typeorm/SettingsRepository";
@@ -6,13 +7,13 @@ interface IRequest {
   chat: boolean;
   username: string;
 }
-
+@injectable()
 class SettingsService {
-  private settingsRepository: ISettingsRepository;
-
-  constructor() {
-    this.settingsRepository = getCustomRepository(SettingsRepository);
-  }
+  constructor(
+    // Injeta o MessagesRepository na prop
+    @inject('SettingsRepository')
+    private settingsRepository: ISettingsRepository 
+    ) {} 
   
   async create({ chat, username }: IRequest) {  
     return this.settingsRepository.create({ chat, username });
@@ -23,7 +24,7 @@ class SettingsService {
   }
 
   async update(username: string, chat: boolean){
-    return await this.settingsRepository.update(username, chat);;
+    return await this.settingsRepository.update(username, chat);
   }
 }
 

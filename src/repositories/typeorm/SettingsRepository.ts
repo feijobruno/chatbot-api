@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { EntityRepository, getRepository, Repository } from "typeorm";
 import { Setting } from "../../entities/Setting";
 import { ICreateSettingsDTO, ISettingsRepository } from "../ISettingsRepository";
@@ -19,7 +20,7 @@ class SettingsRepository implements ISettingsRepository {
     }
 
     async update(username: string, chat: boolean){
-        const settings = await this.repository
+        await this.repository
         .createQueryBuilder()
         .update(Setting)
         .set({ username, chat })

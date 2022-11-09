@@ -1,8 +1,9 @@
 import { io } from "../http";
-
+import { container } from "tsyringe"
 import { ConnectionsService } from "../services/ConnectionsService";
 import { UsersService } from "../services/UsersService";
 import { MessagesService } from "../services/MessagesService";
+
 
 interface IParams {
   text: string;
@@ -10,9 +11,9 @@ interface IParams {
 }
 
 io.on("connect", (socket) => {
-  const connectionsService = new ConnectionsService();
-  const usersService = new UsersService();
-  const messagesService = new MessagesService();
+  const connectionsService = container.resolve(ConnectionsService);
+  const usersService = container.resolve(UsersService);
+  const messagesService = container.resolve(MessagesService);
 
   socket.on("client_first_access", async (params) => {
     const socket_id = socket.id;
@@ -47,10 +48,7 @@ io.on("connect", (socket) => {
       }
     }
 
-    await messagesService.create({
-      text,
-      user_id,
-    });
+    await messagesService.create({ text, user_id });
 
     const allMessages = await messagesService.listByUser(user_id);
 

@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { getCustomRepository } from "typeorm";
 import { IMessagesRepository } from "../repositories/IMessagesRepository";
 import { MessagesRepository } from "../repositories/typeorm/MessagesRepository";
@@ -8,13 +9,15 @@ interface IRequest {
   user_id: string;
 }
 
+// Define que a classe pode ser injetada
+@injectable()
 class MessagesService {
 
-  private messagesRepository: IMessagesRepository;
-
-  constructor() {
-    this.messagesRepository = getCustomRepository(MessagesRepository);
-  }
+  constructor(
+    // Injeta o MessagesRepository na prop
+    @inject('MessagesRepository')
+    private messagesRepository: IMessagesRepository 
+    ) {} 
 
   async create({ admin_id, text, user_id }: IRequest) {
     return await this.messagesRepository.create({ admin_id, text, user_id });

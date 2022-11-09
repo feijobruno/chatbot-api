@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import { http } from "./http";
+import "./shared/container";
 
 import "./websocket/client";
 import "./websocket/admin";

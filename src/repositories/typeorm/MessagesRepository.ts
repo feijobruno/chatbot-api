@@ -4,6 +4,7 @@ import { ICreateMessageDTO, IMessagesRepository } from "../IMessagesRepository";
 
 @EntityRepository(Message)
 class MessagesRepository implements IMessagesRepository {
+
     private repository: Repository<Message>; 
 
     constructor() {

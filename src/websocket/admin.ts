@@ -1,11 +1,12 @@
 import { io } from "../http";
-
+import { container } from "tsyringe"
 import { ConnectionsService } from "../services/ConnectionsService";
 import { MessagesService } from "../services/MessagesService";
 
+
 io.on("connect", async (socket) => {
-  const connectionsService = new ConnectionsService();
-  const messagesService = new MessagesService();
+  const connectionsService = container.resolve(ConnectionsService);
+  const messagesService = container.resolve(MessagesService);
 
   const allConnectionsWithoutAdmin = await connectionsService.findAllWithoutAdmin();
 
