@@ -1,4 +1,3 @@
-import { User } from "../entities/User";
 import { MessagesRepositoryInMemory } from "../repositories/in-memory/MessagesRepositoryInMemory";
 import { MessagesService } from "./MessagesService";
 

@@ -8,8 +8,7 @@ class MessagesRepositoryInMemory implements IMessagesRepository {
     messages: Message[] = []; 
 
     async listByUser(user_id: string): Promise<Message[] | undefined> {
-        const message = this.messages.filter((message) => message.user_id === user_id);
-        return message;
+        return this.messages.filter((message) => message.user_id === user_id);
     }
     
     async create({ admin_id, text, user_id }: ICreateMessageDTO): Promise<void> {
