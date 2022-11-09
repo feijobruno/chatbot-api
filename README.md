@@ -58,6 +58,7 @@ $ npm run test
 - [TypeORM](https://typeorm.io/#/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Jest](https://jestjs.io/pt-BR/)
+- [Swagger](https://swagger.io/)
 ---
 
 by [bruno Feijo Rocha](https://github.com/feijobruno) 
