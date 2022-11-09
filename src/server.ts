@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import swaggerUI from "swagger-ui-express";
 import { http } from "./http";
 import "./shared/container";
 

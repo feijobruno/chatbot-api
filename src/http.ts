@@ -1,5 +1,7 @@
 import "reflect-metadata";
 import express from "express";
+import swaggerUI from "swagger-ui-express";
+import swaggerFile from "./swagger.json";
 import { createServer } from "http";
 import { Server, Socket } from "socket.io";
 import { routes } from "./routes";
@@ -9,6 +11,7 @@ import "./database";
 
 const app = express();
 
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile)); 
 app.use(express.static(path.join(__dirname, "..", "public")));
 app.set("views", path.join(__dirname, "..", "public"));
 app.engine("html", require("ejs").renderFile);

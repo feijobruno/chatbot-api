@@ -1,14 +1,15 @@
-import { EntityRepository, getRepository, Repository } from "typeorm";
+import { EntityRepository } from "typeorm";
 import { Message } from "../../entities/Message";
 import { ICreateMessageDTO, IMessagesRepository } from "../IMessagesRepository";
 
 @EntityRepository(Message)
 class MessagesRepositoryInMemory implements IMessagesRepository {
+    
     messages: Message[] = []; 
 
-    async listByUser(user_id: string): Promise<Message[]> {
-        const list = this.messages.find((message) => message.user_id === user_id);
-        return null; //TODO
+    async listByUser(user_id: string): Promise<Message[] | undefined> {
+        const message = this.messages.filter((message) => message.user_id === user_id);
+        return message;
     }
     
     async create({ admin_id, text, user_id }: ICreateMessageDTO): Promise<void> {

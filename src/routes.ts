@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import { SettingsController } from "./controllers/SettingsController";
 import { UsersController } from "./controllers/UsersController";
 import { MessagesController } from "./controllers/MessagesController";

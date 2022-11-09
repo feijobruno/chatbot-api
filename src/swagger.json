@@ -1,0 +1,158 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Chatbot Documentation",
+      "description": "This is an API Chatbot",
+      "version": "1.0.0",
+      "contact": {
+        "email": "bruno.feijo@live.com"
+      }
+    },
+    "paths": {
+      "/messages":{
+        "post": {
+          "tags": ["Message"],
+          "summary": "Create a Message",
+          "description": "Create a new Message",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "admin_id": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "user_id": {
+                        "type": "string"
+                      }
+                  },
+                  "example": {
+                    "admin_id": "01",
+                    "text": "Dúvida referente a fatura",
+                    "user_id": "010"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created"
+            }
+          }
+        },
+        "get": {
+          "tags": ["Message"],
+          "summary": "List messages by users",
+          "description": "Show messages for user",
+          "responses": {
+            "200": {
+              "description": "Success",
+               "content": {
+                 "application/json": {
+                   "schema": {
+                     "type": "array",
+                     "items": {
+                       "type": "object",
+                       "properties": {
+                         "admin_id": {
+                           "type": "string"
+                         },
+                         "text": {
+                           "type": "string"
+                         },
+                         "user_id": {
+                            "type": "string"
+                          }
+                       }
+                     }
+                   }
+                 }
+               }
+            }
+          }
+        }
+      },
+      "/users":{
+        "post": {
+          "tags": ["Users"],
+          "summary": "Create a user",
+          "description": "create a new user",
+          "requestBody": {
+            "content":{
+              "application/json": {
+                "schema":{
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created"
+            }
+          }
+        }
+      },
+      "/settings": {
+        "post":{
+          "tags": ["Settings"],
+          "summary": "Create a setting",
+          "description": "Create a new setting",
+          "requestBody":{
+            "content":{
+              "application/json":{
+                "schema": {
+                  "$ref": "#/definitions/Setting"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created"
+            }
+          }
+        }
+      }
+    },
+    "definitions":{
+      "Message": {
+        "type": "object",
+        "properties": {
+          "admin_id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }, 
+          "user_id": {
+            "type": "string"
+          }
+        }
+      },
+      "Setting": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "chat": {
+            "type": "boolean"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
